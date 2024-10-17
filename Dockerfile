@@ -1,13 +1,11 @@
 FROM python:3.9
 
-WORKDIR /app
+   WORKDIR /app
 
-COPY requirements.txt .
+   RUN pip install fastapi==0.95.1 uvicorn==0.22.0 pydantic==1.10.7
 
-RUN pip install --no-cache-dir -r requirements.txt
+   COPY . .
 
-COPY . .
+   RUN chmod +x start.sh
 
-RUN chmod +x start.sh
-
-CMD ["./start.sh"]
+   CMD ["./start.sh"]
